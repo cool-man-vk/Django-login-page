@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login </title>
+    <!--Google fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet"> 
+    <!--Css--> 
+    <style>
+        * 
+        {
+            padding:0;
+            margin:0;
+            font-family: 'Gowun Dodum', sans-serif;
+        }
+        body 
+        {
+            align-items: center; 
+            justify-content: center;
+        }
+        .login-html 
+        {
+            background-color: lightskyblue;
+        }
+        .login-section
+        {
+            width:40%;
+            margin-left:30%;
+            margin-right: 30%;
+            background-color: lightyellow;
+            height:auto;
+            margin-top:130px;
+            align-items: center; 
+            justify-content: center;
+        }
+        .login-section > div 
+        {
+            position:relative;
+            padding:30px;
+        }
+        table 
+        {
+            width:90%;
+            margin-left:5%;
+            margin-right:5%;
+        }
+        .usname , .password , .email
+        {
+            width:80%;
+            margin-left:10%;
+            margin-right: 10%; 
+            margin-top:8px;
+            margin-bottom: 8px; 
+            height:35px;
+            font-size: 16px;
+            transition:box-shadow .5s;
+            border:none;
+            outline:none;
+            border-radius: 35px;
+            border:2px solid rgb(8, 136, 216);
+            letter-spacing: 1px; 
+            padding:5px;
+        }
+        .usname:focus , .password:focus , .email:focus 
+        {
+            box-shadow:0 0 11px lightskyblue;
+        }
+        .login-btn 
+        {
+            width:50%;
+            height:auto;
+            color:white;
+            cursor:pointer;
+            padding:10px;
+            border-radius: 25px;
+            font-size:16px;
+            margin-left:25%;
+            margin-right: 25%;
+            margin-top:12px;
+            outline:none;
+            border:none;
+            background:linear-gradient(60deg,orange,yellow);
+      }
+       .login-btn:hover 
+       {
+            background:linear-gradient(60deg,yellow,orange);
+       }
+       @media(max-width:915px) 
+       {
+        .login-section
+        {
+            width:90%;
+            margin-left:5%;
+            margin-right: 5%;
+            background-color: lightyellow;
+            height:auto;
+            margin-top:100px;
+            align-items: center; 
+            justify-content: center;
+        }
+        .usname , .password , .email 
+        {
+            width:100%;
+            margin-left:0;
+            margin-right: 0; 
+            padding:6px;
+        }
+       }
+       .act 
+       {
+           text-align: center;
+           padding:10px;
+           color:mediumaquamarine;
+       } 
+       .messages 
+       {
+           text-align: center; 
+           font-size:16px;
+           background-color: rgb(155, 153, 153);
+           color:navy;
+           margin-top:10px;
+           margin-bottom:10px;
+           padding:8px;
+       }
+    </style>
+</head>
+<body>
+    <body class="login-html">
+        <div class="login-section"> 
+            <div>
+                <h1 style="text-align: center; color:brown;letter-spacing:4px;">Login</h1> 
+                <form  method="POST">
+                    {% csrf_token %}
+                    <table>
+                        <tr>
+                            <input type="text" name="username" class="usname" placeholder=" Username">
+                        </tr>
+                        <br/>
+                        <tr>
+                            <input type="password" name="password" class="password" placeholder="Your Password">
+                        </tr><br/>
+                    </table>
+                    <input type="submit" value="Login" class="login-btn">
+                    {% for messages in messages  %}
+                      <p class="messages">{{messages}}</p>
+                    {% endfor %}
+                    <h4 class="act">Don't have an account?&nbsp;<a href="/register">Register Here</a></h4>
+                </form>
+            </div>
+        </div>
+</body>
+</body>
+</html>

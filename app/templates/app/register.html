@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <!--Google fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet"> 
+    <!--End-->
+    <!--Css--> 
+    <style>
+        * 
+        {
+            padding:0;
+            margin:0;
+            font-family: 'Gowun Dodum', sans-serif;
+        } 
+        .register-html 
+        {
+            background-color: lightskyblue;
+        }
+        .register-section
+        {
+            width:40%;
+            margin-left:30%;
+            margin-right: 30%;
+            background-color: lightyellow;
+            height:auto;
+            margin-top:100px;
+            align-items: center; 
+            justify-content: center;
+        }
+        .register-section > div 
+        {
+            padding:30px;
+        }
+        table 
+        {
+            width:90%;
+            margin-left:5%;
+            margin-right:5%;
+        }
+        .usname , .password , .email
+        {
+            width:80%;
+            margin-left:10%;
+            margin-right: 10%; 
+            margin-top:8px;
+            margin-bottom: 8px; 
+            height:35px;
+            font-size: 16px;
+            transition:box-shadow .5s;
+            border:none;
+            outline:none;
+            border-radius: 35px;
+            border:2px solid rgb(8, 136, 216);
+            letter-spacing: 1px; 
+            padding:5px;
+        }
+        .usname:focus , .password:focus , .email:focus 
+        {
+            box-shadow:0 0 11px lightskyblue;
+        }
+        .submit-btn 
+        {
+            width:50%;
+            height:auto;
+            color:white;
+            cursor:pointer;
+            padding:10px;
+            border-radius: 25px;
+            font-size:16px;
+            margin-left:25%;
+            margin-right: 25%;
+            margin-top:12px;
+            outline:none;
+            border:none;
+            background:linear-gradient(60deg,orange,yellow);
+      }
+       .submit-btn:hover 
+       {
+            background:linear-gradient(60deg,yellow,orange);
+       }
+       @media(max-width:915px) 
+       {
+        .register-section
+        {
+            width:90%;
+            margin-left:5%;
+            margin-right: 5%;
+            background-color: lightyellow;
+            height:auto;
+            margin-top:80px;
+            align-items: center; 
+            justify-content: center;
+        }
+        .usname , .password , .email 
+        {
+            width:100%;
+            margin-left:0;
+            margin-right: 0; 
+            padding:6px;
+        }
+       }
+       .act 
+       {
+           text-align: center;
+           padding:10px;
+           color:mediumaquamarine;
+       }
+    </style>
+</head>
+<body class="register-html">
+        <div class="register-section"> 
+            <div>
+                <h1 style="text-align: center; color:brown;">Register</h1> 
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    <table>
+                        <tr>
+                            <td>{{form.username}}</td>
+                        </tr>
+                        <br/>
+                        <tr>
+                            <td>{{form.email}}</td>
+                        </tr><br/>
+                        <tr>
+                            <td>{{form.password1}}</td>
+                        </tr>
+                        <br/>
+                        <tr>
+                            <td>{{form.password2}}</td>
+                        </tr>
+                        <br/>
+                    </table>
+                    <input type="submit" value="Submit" class="submit-btn">
+                    <h4 class="act">Already have an account?&nbsp;<a href="/login">Login Here</a></h4>
+                </form>
+                {{form.errors}}
+            </div>
+        </div>
+</body>
+</html>

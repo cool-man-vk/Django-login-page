@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {% block title %}
+          HomePage
+        {% endblock title %}
+    </title>
+    <!--Css--> 
+    <style>
+        * 
+        {
+            margin:0;
+            padding:0;
+            box-sizing: border-box;
+            font-family: 'Gowun Dodum', sans-serif;
+        }
+        .navbar 
+        {
+            background-color: rgb(41, 39, 39);
+            height:90px;
+            width:100%;
+            overflow: auto;
+        }
+        .logo 
+        {
+            float: left;
+            padding:25px 40px;
+            letter-spacing: 2px;
+        }
+        .logo > a
+        {
+            font-size:22px;
+            color:rgb(19, 206, 206);
+            text-decoration: none;
+        }
+        .logo a:hover 
+        {
+            color:rgb(204, 229, 252);
+        }
+        .options 
+        {
+            float:right;
+            list-style: none; 
+            display: flex;
+            margin-right:40px;
+            margin-top:30px;
+        }
+        .options a 
+        {
+            text-decoration: none; 
+            color:white;
+            font-weight: bolder;
+            font-size:18px;
+            margin-right:30px;
+            margin-left:30px;
+            letter-spacing: 2px;
+        }
+        #bar-icon 
+        {
+            visibility: hidden;
+        }
+        #close-btn 
+        {
+            visibility: hidden;
+        }
+        @media(max-width:807px) 
+        {
+            .options 
+            {
+                display:none;
+                position: absolute;
+                background-color:rgb(51, 49, 49);
+                width:0;
+                height:270px;
+                margin-top:90px;
+                padding:40px 60px;
+                float:right;
+                list-style: none;
+                margin-right:0;
+            }
+            .options a 
+            {
+                line-height: 50px;
+                text-align: center;
+            }
+            #bar-icon 
+            {
+                visibility: visible;
+                color:white;
+                float:right;
+                font-size:40px;
+                padding:20px 45px;
+            }
+            #close-btn 
+            {
+                visibility: visible;
+                color:white;
+                float:right;
+                font-size:25px;
+            }
+        }
+        @media(max-width:326px) 
+        {
+            #bar-icon 
+            {
+                visibility: visible;
+                color:white;
+                float:right;
+                font-size:40px;
+                padding:22px 30px;
+            }
+        }
+        .box1 
+        {
+            width:40%;
+            height:auto;
+            margin-right:30%;
+            margin-left:30%;
+            background-color: aliceblue; 
+            border: 2px solid black;
+            border-radius: 30px;
+            margin-top:180px;
+            padding:40px;
+        }
+        .quote 
+        {
+            font-size:3.8vh;
+            color: mediumpurple;
+            text-align: center;
+        }
+        @media(max-width:758px) 
+        {
+            .box1 
+            {
+                width:80%;
+                height:auto;
+                margin-right:10%;
+                margin-left:10%;
+                background-color: aliceblue; 
+                border: 2px solid black;
+                border-radius: 30px;
+                margin-top:110px;
+                padding:40px;
+            }
+        }
+        .add-tasks-btn 
+        {
+            width:30%;
+            margin-left:35%;
+            margin-left:35%;
+            height:auto;
+            padding:10px;
+            border:none;
+            outline:none;
+            font-weight: 800;
+            font-size:16px;
+            color:white;
+            border-radius: 40px;
+            background:rgb(233, 233, 136);
+            margin-top:18px;
+        }
+        .add-tasks-btn:hover 
+        {
+            background:linear-gradient(45deg,orange,orangered);
+            cursor: pointer;
+            box-shadow: 0 0 10px rgb(201, 189, 88);
+        }
+        @media(max-width:397px) 
+        {
+            .add-tasks-btn 
+            {
+                width:60%;
+                margin-left:20%;
+                margin-left:20%;
+                height:auto;
+                padding:10px;
+                border:none;
+                outline:none;
+                font-weight: 800;
+                font-size:16px;
+                color:white;
+                border-radius: 40px;
+                background:rgb(233, 233, 136);
+            }
+        }
+    </style>
+    <!--Javascript--> 
+    <script>
+        function shownav() 
+        {
+            document.getElementById("options").style.width="100%";
+            document.getElementById("options").style.display="flex";
+            document.getElementById("options").style.flexDirection="column";
+            
+        }
+        function closenav() 
+        {
+            document.getElementById("options").style.width="0";
+            document.getElementById("options").style.display="none";
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <div class="navbar">
+        <h2 class="logo">
+            <a href="/">To-Do List</a>
+        </h2>
+        <i class="fa fa-bars" id="bar-icon" onclick="shownav()"></i>
+        <ul class="options" id="options" onclick="closenav()">
+            <i class="fa fa-close" id="close-btn"></i>
+            <a href="/">Home</a>
+            <a href="/todo">ToDo Lists</a>
+            <a href="/addtasks">Add Tasks</a>
+            <a href="{% url 'logout' %}">Logout</a>
+        </ul>
+    </div>
+    {% block content %}
+    <h1 style="text-align:center; color:cadetblue;padding:20px;">Hello {{request.user}}</h1>
+    <div class="box1">
+        <h1 class="quote">Finish the most important tasks and stop wasting time on irrelevant activities!</h1>
+        <a href="/addtasks"><button class="add-tasks-btn">Add Tasks</button></a>
+    </div>
+    {% endblock content %}
+</body>
+</html>

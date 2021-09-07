@@ -1,0 +1,81 @@
+{% extends "app/base.html" %}
+{% block title %}
+  Scheduled Tasks
+{% endblock title %}
+{% block content %}
+{% for data_set in data  %}
+<div class="details">
+  <table style="border-spacing: 12px;">
+      <tr style="padding:10px;">
+        <h1 style="text-align: center;color:goldenrod;">{{data_set.item}}</h1>
+      </tr>
+     <tr style="padding:10px;">
+       <td><h3>Start Date:</h3></td> 
+       <td><h3>{{data_set.start_date}}</h3></td>
+     </tr>
+    <tr style="padding:10px;">
+      <td><h3>End Date:</h3></td>
+      <td><h3>{{data_set.end_date}}</h3></td>
+    </tr>
+    <tr style="padding:10px;">
+      <td><h3>Start Time:</h3></td>
+      <td><h3>{{data_set.start_time}}</h3></td>
+    </tr>
+    <tr style="padding:15px;">
+      <td><h3>End Time:</h3></td>
+      <td><h3>{{data_set.end_time}}</h3></td>
+    </tr>
+  </table>
+  
+</div>
+<!--Css--> 
+<style>
+  .details 
+  {
+    width:40%;
+    margin-right:30%;
+    margin-left:30%;
+    background: aqua;
+    justify-content: center; 
+    border-radius: 40px; 
+    border:2px solid black;
+    align-items: center;
+    height:auto;
+    margin-top:12px;
+    margin-bottom: 12px;
+    padding:30px;
+  }
+  tr > td:nth-child(1) > h3
+  {
+    color: darkblue;
+  }
+  tr > td:nth-child(1) 
+  {
+    text-align: center;
+  }
+  tr > td:nth-child(2) > h3
+  {
+    color: rgb(176, 39, 194);
+  }
+  @media(max-width:769px) 
+  {
+    .details 
+    {
+      width:90%;
+      margin-right:5%;
+      margin-left:5%;
+      background: aqua;
+      justify-content: center; 
+      border-radius: 40px; 
+      border:2px solid black;
+      align-items: center;
+      height:300px;
+      margin-top:12px;
+      margin-bottom: 12px;
+      padding:30px;
+    }
+  }
+</style>
+{% endfor %}
+   
+{% endblock content %}

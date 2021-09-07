@@ -1,0 +1,86 @@
+{% extends "app/base.html" %}
+{% block title %}
+  Add Tasks
+{% endblock title %}
+{% block content %}
+<div class="todo-box">
+    <form action="." method="POST">{% csrf_token %}
+      <table>{{form.as_table}}</table>
+      <input type="submit" class="save" value="Save"/>
+  </form>
+</div>
+<!--Css-->
+<style>
+  table 
+  {
+    display: block; 
+    border-spacing: 10px;
+  }
+  .save 
+  {
+    margin-left:20%;
+    margin-right: 20%; 
+    width:60%;
+    padding:6px 3px;
+    font-size:18px;
+    border-radius: 25px; 
+    background-color: blue; 
+    color:white;
+    outline:none;
+    border:none;
+    cursor:pointer;
+  }
+  .save:hover 
+  {
+    background: linear-gradient(50deg,rgb(23, 211, 224),rgb(134, 188, 209));
+  }
+  input 
+  {
+    margin-top:8px;
+    margin-bottom: 8px;
+  }
+  input[type="text"] , input[type="date"] 
+  {
+    height:25px;
+    width:100%;
+    padding:5px;
+  }
+  .todo-box 
+  {
+    width:60%;
+    margin-left:20%;
+    margin-right:20%;
+    height:auto;
+    background-color: aliceblue;
+    margin-top:175px;
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    padding:20px;
+    border-radius: 30px; 
+    box-shadow: 0 0 11px grey;
+  }
+  .additem 
+  {
+    width:200px;
+    height:40px;
+    padding:5px;
+    font-size:16px;
+    letter-spacing: 2px;
+  }
+  @media(max-width:620px) {
+    .todo-box 
+      {
+        width:90%;
+        margin-left:5%;
+        margin-right:5%;
+        height:auto;
+        background-color: aliceblue;
+        margin-top:200px;
+        display:flex;
+        justify-content: center; 
+        align-items: center;
+      }
+  }
+</style>
+{% endblock content %}
